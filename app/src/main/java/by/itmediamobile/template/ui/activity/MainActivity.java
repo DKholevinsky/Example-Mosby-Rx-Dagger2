@@ -1,7 +1,9 @@
-package by.itmediamobile.template;
+package by.itmediamobile.template.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import by.itmediamobile.template.R;
 
 public class MainActivity extends AppCompatActivity {
 
