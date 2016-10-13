@@ -5,6 +5,7 @@ import android.content.Context;
 import javax.inject.Singleton;
 
 import by.itmediamobile.template.di.module.AppModule;
+import by.itmediamobile.template.di.module.DataModule;
 import dagger.Component;
 
 /**
