@@ -11,4 +11,7 @@ import by.itmediamobile.template.model.Source;
  */
 
 public interface SourceView extends MvpLceView<List<Source>> {
+
+    void goToNews(String sourceId);
+
 }

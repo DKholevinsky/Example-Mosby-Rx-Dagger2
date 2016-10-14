@@ -8,13 +8,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 import butterknife.BindView;
 import by.itmediamobile.template.R;
 import by.itmediamobile.template.base.BaseMvpFragment;
+import by.itmediamobile.template.model.Feed;
 import by.itmediamobile.template.model.Source;
 import by.itmediamobile.template.model.adapter.SourceAdapter;
+import by.itmediamobile.template.ui.event.FragmentChangeEvent;
 import by.itmediamobile.template.ui.presenter.SourcePresenter;
 import by.itmediamobile.template.ui.view.SourceView;
 
@@ -35,8 +39,8 @@ public class SourceFragment extends BaseMvpFragment<SourceView, SourcePresenter>
 
         adapter = new SourceAdapter(new SourceAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(Source feed) {
-
+            public void onItemClick(Source source) {
+                goToNews(source.getId());
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -79,5 +83,11 @@ public class SourceFragment extends BaseMvpFragment<SourceView, SourcePresenter>
     @Override
     public void loadData(boolean pullToRefresh) {
         presenter.getData();
+    }
+
+
+    @Override
+    public void goToNews(String sourceId) {
+        EventBus.getDefault().post(new FragmentChangeEvent(FeedFragment.newInstance(sourceId)));
     }
 }

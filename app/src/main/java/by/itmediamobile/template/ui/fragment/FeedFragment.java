@@ -27,11 +27,26 @@ public class FeedFragment extends BaseMvpFragment<FeedView, FeedPresenter> imple
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
+    private static final String ARG_SOURCE_ID = "sourceId";
+
+    private String sourceId;
+
     private FeedAdapter adapter;
+
+    public static FeedFragment newInstance(String sourceId) {
+        FeedFragment fragment = new FeedFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(ARG_SOURCE_ID, sourceId);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        sourceId = getArguments().getString(ARG_SOURCE_ID);
+
         adapter = new FeedAdapter(new FeedAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Feed feed) {
@@ -79,6 +94,6 @@ public class FeedFragment extends BaseMvpFragment<FeedView, FeedPresenter> imple
 
     @Override
     public void loadData(boolean pullToRefresh) {
-        presenter.getFeedData();
+        presenter.getFeedData(sourceId);
     }
 }

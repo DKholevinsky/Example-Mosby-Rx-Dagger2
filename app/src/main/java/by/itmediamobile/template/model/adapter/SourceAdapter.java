@@ -1,6 +1,7 @@
 package by.itmediamobile.template.model.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.itmediamobile.template.R;
-import by.itmediamobile.template.model.Feed;
-import by.itmediamobile.template.model.NewsFeed;
+import by.itmediamobile.template.app.Constant;
 import by.itmediamobile.template.model.Source;
 
 /**
@@ -26,7 +26,7 @@ import by.itmediamobile.template.model.Source;
 public class SourceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface OnItemClickListener {
-        void onItemClick(Source feed);
+        void onItemClick(Source source);
     }
 
     private final OnItemClickListener listener;
@@ -67,7 +67,7 @@ public class SourceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     /**
      * Новости
      */
-    static class SourceViewHolder extends RecyclerView.ViewHolder implements OnItemClickListener {
+    static class SourceViewHolder extends RecyclerView.ViewHolder {
 
         private OnItemClickListener listener;
 
@@ -84,17 +84,18 @@ public class SourceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             ButterKnife.bind(this, itemView);
         }
 
-        void bind(Source source) {
+        void bind(final Source source) {
             this.name.setText(source.getName());
             this.description.setText(source.getDescription());
             Picasso.with(itemView.getContext())
                     .load(source.getImage())
                     .into(this.image);
-        }
-
-        @Override
-        public void onItemClick(Source source) {
-            listener.onItemClick(source);
+            this.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(source);
+                }
+            });
         }
     }
 }

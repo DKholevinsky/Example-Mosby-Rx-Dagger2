@@ -25,8 +25,8 @@ public class DefaultFeedRepository implements FeedRepository {
     }
 
     @Override
-    public Observable<List<Feed>> getFeedList() {
-        return service.getArticles("ars-technica", Constant.API_KEY)
+    public Observable<List<Feed>> getFeedList(String sourceId) {
+        return service.getArticles(sourceId, Constant.API_KEY)
                 .map(new Func1<ArticlesApiModel, List<Feed>>() {
                     @Override
                     public List<Feed> call(ArticlesApiModel articlesApiModel) {

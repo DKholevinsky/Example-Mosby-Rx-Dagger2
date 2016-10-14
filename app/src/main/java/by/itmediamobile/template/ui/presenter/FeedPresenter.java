@@ -30,12 +30,12 @@ public class FeedPresenter extends MvpBasePresenter<FeedView> implements Observe
         App.getDataComponent().inject(this);
     }
 
-    public void getFeedData() {
+    public void getFeedData(String sourceId) {
 
         if (isViewAttached()) {
             getView().showLoading(false);
 
-            subscription = feedRepository.getFeedList()
+            subscription = feedRepository.getFeedList(sourceId)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .unsubscribeOn(Schedulers.computation())

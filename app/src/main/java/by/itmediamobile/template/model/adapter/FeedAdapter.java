@@ -67,7 +67,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     /**
      * Новости
      */
-    static class NewsFeedViewHolder extends RecyclerView.ViewHolder implements OnItemClickListener {
+    static class NewsFeedViewHolder extends RecyclerView.ViewHolder {
 
         private OnItemClickListener listener;
 
@@ -86,18 +86,20 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             ButterKnife.bind(this, itemView);
         }
 
-        void bind(NewsFeed feed) {
+        void bind(final NewsFeed feed) {
             this.name.setText(feed.getTitle());
             this.description.setText(feed.getDescription());
             this.author.setText(feed.getAuthor());
             Picasso.with(itemView.getContext())
                     .load(feed.getImage())
                     .into(this.image);
+            this.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(feed);
+                }
+            });
         }
 
-        @Override
-        public void onItemClick(Feed feed) {
-            listener.onItemClick(feed);
-        }
     }
 }

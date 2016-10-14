@@ -35,6 +35,7 @@ dependencies {
     apt 'com.google.dagger:dagger-compiler:2.5'
     compile 'com.google.dagger:dagger:2.5'
     provided 'javax.annotation:jsr250-api:1.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
 
     //Network
     compile 'com.squareup.retrofit2:retrofit:2.1.0'

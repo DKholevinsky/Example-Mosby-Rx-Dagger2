@@ -11,6 +11,6 @@ import rx.Observable;
 
 public interface FeedRepository {
 
-    Observable<List<Feed>> getFeedList();
+    Observable<List<Feed>> getFeedList(String sourceId);
 
 }
