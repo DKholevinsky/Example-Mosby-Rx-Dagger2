@@ -1,10 +1,10 @@
-package by.itmediamobile.template.model;
+package by.itmediamobile.template.model.apimodel;
 
 /**
  * Created by Denis Kholevinsky
  */
 
-public class News {
+public class NewsApiModel {
 
     private String author;
     private String title;

@@ -3,6 +3,7 @@ package by.itmediamobile.template.di.component;
 import by.itmediamobile.template.di.module.DataModule;
 import by.itmediamobile.template.di.scope.DataScope;
 import by.itmediamobile.template.ui.presenter.FeedPresenter;
+import by.itmediamobile.template.ui.presenter.SourcePresenter;
 import dagger.Component;
 
 /**
@@ -17,5 +18,6 @@ import dagger.Component;
 public interface DataComponent {
 
     void inject(FeedPresenter presenter);
+    void inject(SourcePresenter presenter);
 
 }
