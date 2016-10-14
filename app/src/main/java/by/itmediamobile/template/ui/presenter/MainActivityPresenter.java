@@ -2,6 +2,7 @@ package by.itmediamobile.template.ui.presenter;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 
+import by.itmediamobile.template.ui.fragment.CategoryPageFragment;
 import by.itmediamobile.template.ui.fragment.FeedFragment;
 import by.itmediamobile.template.ui.fragment.SourceFragment;
 import by.itmediamobile.template.ui.view.MainActivityView;
@@ -13,7 +14,7 @@ import by.itmediamobile.template.ui.view.MainActivityView;
 public class MainActivityPresenter extends MvpBasePresenter<MainActivityView> {
 
     public void choiceFragment() {
-        getView().showChildFragment(new SourceFragment());
+        getView().showChildFragment(new CategoryPageFragment());
     }
 
 }

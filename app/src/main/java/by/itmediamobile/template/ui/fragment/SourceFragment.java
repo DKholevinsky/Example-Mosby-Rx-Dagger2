@@ -15,7 +15,6 @@ import java.util.List;
 import butterknife.BindView;
 import by.itmediamobile.template.R;
 import by.itmediamobile.template.base.BaseMvpFragment;
-import by.itmediamobile.template.model.Feed;
 import by.itmediamobile.template.model.Source;
 import by.itmediamobile.template.model.adapter.SourceAdapter;
 import by.itmediamobile.template.ui.event.FragmentChangeEvent;
@@ -31,11 +30,24 @@ public class SourceFragment extends BaseMvpFragment<SourceView, SourcePresenter>
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    SourceAdapter adapter;
+    private static final String ARG_CATEGORY = "category";
+    private String category;
+
+    private SourceAdapter adapter;
+
+    public static SourceFragment newInstance(String category) {
+        SourceFragment fragment = new SourceFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(ARG_CATEGORY, category);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        category = getArguments().getString(ARG_CATEGORY);
 
         adapter = new SourceAdapter(new SourceAdapter.OnItemClickListener() {
             @Override
@@ -82,7 +94,7 @@ public class SourceFragment extends BaseMvpFragment<SourceView, SourcePresenter>
 
     @Override
     public void loadData(boolean pullToRefresh) {
-        presenter.getData();
+        presenter.getData(category);
     }
 
 

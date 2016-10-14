@@ -31,9 +31,7 @@ public class SourcePresenter extends MvpBasePresenter<SourceView> implements Obs
         App.getDataComponent().inject(this);
     }
 
-    public void getData() {
-
-        SourceCategory category = new SourceCategory("business");
+    public void getData(String category) {
 
         if (isViewAttached()) {
             subscription = sourceRepository.getSourceList(category)

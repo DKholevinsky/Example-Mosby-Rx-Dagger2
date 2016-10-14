@@ -65,7 +65,7 @@ public class SourceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     /**
-     * Новости
+     * Список источников
      */
     static class SourceViewHolder extends RecyclerView.ViewHolder {
 

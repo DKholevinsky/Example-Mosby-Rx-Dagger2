@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Template</string>
+    <string-array name="sourceCategories">
+        <item>business</item>
+        <item>entertainment</item>
+        <item>gaming</item>
+        <item>general</item>
+        <item>music</item>
+        <item>science-and-nature</item>
+        <item>sport</item>
+        <item>technology</item>
+    </string-array>
 </resources>

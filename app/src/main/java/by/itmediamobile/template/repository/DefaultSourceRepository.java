@@ -24,8 +24,8 @@ public class DefaultSourceRepository implements SourceRepository {
     }
 
     @Override
-    public Observable<List<Source>> getSourceList(SourceCategory category) {
-        return service.getSources(category.getName())
+    public Observable<List<Source>> getSourceList(String category) {
+        return service.getSources(category)
                 .map(new Func1<SourcesApiModel, List<Source>>() {
                     @Override
                     public List<Source> call(SourcesApiModel sourcesApiModel) {

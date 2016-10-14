@@ -3,7 +3,6 @@ package by.itmediamobile.template.repository;
 import java.util.List;
 
 import by.itmediamobile.template.model.Source;
-import by.itmediamobile.template.model.SourceCategory;
 import rx.Observable;
 
 /**
@@ -12,6 +11,6 @@ import rx.Observable;
 
 public interface SourceRepository {
 
-    Observable<List<Source>> getSourceList(SourceCategory category);
+    Observable<List<Source>> getSourceList(String category);
 
 }
