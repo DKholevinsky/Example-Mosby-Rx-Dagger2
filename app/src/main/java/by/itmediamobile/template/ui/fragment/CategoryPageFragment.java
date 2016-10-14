@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -72,6 +73,7 @@ public class CategoryPageFragment extends BaseMvpFragment<CategoryPageView, Cate
 
     @Override
     public void loadData(boolean pullToRefresh) {
+        Log.d("TTT", "loadData()");
         presenter.getData();
     }
 }

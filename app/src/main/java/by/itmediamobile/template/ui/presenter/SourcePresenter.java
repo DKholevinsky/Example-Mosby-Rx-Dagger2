@@ -1,5 +1,7 @@
 package by.itmediamobile.template.ui.presenter;
 
+import android.util.Log;
+
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 
 import java.util.List;
@@ -8,7 +10,6 @@ import javax.inject.Inject;
 
 import by.itmediamobile.template.app.App;
 import by.itmediamobile.template.model.Source;
-import by.itmediamobile.template.model.SourceCategory;
 import by.itmediamobile.template.repository.SourceRepository;
 import by.itmediamobile.template.ui.view.SourceView;
 import rx.Observer;
@@ -31,10 +32,12 @@ public class SourcePresenter extends MvpBasePresenter<SourceView> implements Obs
         App.getDataComponent().inject(this);
     }
 
-    public void getData(String category) {
+    public void getData(String category, final boolean pullToRefresh) {
 
         if (isViewAttached()) {
+            getView().showLoading(pullToRefresh);
             subscription = sourceRepository.getSourceList(category)
+                    .first()
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .unsubscribeOn(Schedulers.computation())
@@ -46,6 +49,7 @@ public class SourcePresenter extends MvpBasePresenter<SourceView> implements Obs
     public void onCompleted() {
         if (isViewAttached()) {
             getView().showContent();
+            Log.d("TTT", "onCompleted()");
         }
     }
 

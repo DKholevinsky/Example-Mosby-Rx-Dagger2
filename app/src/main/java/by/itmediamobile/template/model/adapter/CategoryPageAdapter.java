@@ -40,10 +40,10 @@ public class CategoryPageAdapter extends FragmentStatePagerAdapter {
         return categories.get(position).getName().toUpperCase();
     }
 
-    @Override
-    public int getItemPosition(Object object) {
-        return CategoryPageAdapter.POSITION_NONE;
-    }
+//    @Override
+//    public int getItemPosition(Object object) {
+//        return CategoryPageAdapter.POSITION_NONE;
+//    }
 
     @Override
     public int getCount() {
