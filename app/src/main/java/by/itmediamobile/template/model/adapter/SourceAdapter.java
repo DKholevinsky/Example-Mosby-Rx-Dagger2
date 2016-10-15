@@ -1,7 +1,6 @@
 package by.itmediamobile.template.model.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.itmediamobile.template.R;
-import by.itmediamobile.template.app.Constant;
 import by.itmediamobile.template.model.Source;
 
 /**

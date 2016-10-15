@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.itmediamobile.template.R;
+import by.itmediamobile.template.app.App;
 import by.itmediamobile.template.model.SourceCategory;
 import by.itmediamobile.template.ui.view.CategoryPageView;
 
@@ -19,13 +20,13 @@ public class CategoryPagePresenter extends MvpBasePresenter<CategoryPageView> {
 
     private Context context;
 
-    public CategoryPagePresenter(Context context) {
-        this.context = context;
+    public CategoryPagePresenter() {
+        this.context = App.getAppComponent().context();
     }
 
-    public void getData() {
+    public void getData(boolean pullToRefresh) {
         if (isViewAttached()) {
-            getView().showLoading(false);
+            getView().showLoading(pullToRefresh);
 
             getView().setData(getSourcesCategoryFromStringResources());
 

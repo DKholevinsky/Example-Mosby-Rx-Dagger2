@@ -1,6 +1,7 @@
 package by.itmediamobile.template.ui.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,7 +34,7 @@ public class SourceFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout,
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    private static final String ARG_CATEGORY = "category";
+    private static final String ARG_CATEGORY = "category_id";
     private String category;
 
     private SourceAdapter adapter;
@@ -46,13 +47,17 @@ public class SourceFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout,
         return fragment;
     }
 
+    @Override
+    public void onDestroyView() {
+        adapter = null;
+        super.onDestroyView();
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         category = getArguments().getString(ARG_CATEGORY);
-
         contentView.setOnRefreshListener(this);
 
         adapter = new SourceAdapter(new SourceAdapter.OnItemClickListener() {
@@ -66,10 +71,16 @@ public class SourceFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout,
     }
 
     @Override
+    public void onNewViewStateInstance() {
+        super.onNewViewStateInstance();
+    }
+
+    @Override
     protected int getLayoutRes() {
         return R.layout.source_fragment;
     }
 
+    @NonNull
     @Override
     public SourcePresenter createPresenter() {
         return new SourcePresenter();
@@ -78,7 +89,14 @@ public class SourceFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout,
     @Override
     public void showLoading(boolean pullToRefresh) {
         super.showLoading(pullToRefresh);
-        contentView.setRefreshing(pullToRefresh);
+        if (pullToRefresh && !contentView.isRefreshing()){
+            contentView.post(new Runnable() {
+                @Override
+                public void run() {
+                    contentView.setRefreshing(true);
+                }
+            });
+        }
     }
 
     @Override
@@ -86,6 +104,7 @@ public class SourceFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout,
         return adapter == null ? null : adapter.getData();
     }
 
+    @NonNull
     @Override
     public LceViewState<List<Source>, SourceView> createViewState() {
         setRetainInstance(true);
@@ -131,4 +150,5 @@ public class SourceFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout,
     public void onRefresh() {
         loadData(true);
     }
+
 }

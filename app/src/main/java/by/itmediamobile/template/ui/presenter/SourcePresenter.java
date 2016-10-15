@@ -1,7 +1,5 @@
 package by.itmediamobile.template.ui.presenter;
 
-import android.util.Log;
-
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 
 import java.util.List;
@@ -49,7 +47,6 @@ public class SourcePresenter extends MvpBasePresenter<SourceView> implements Obs
     public void onCompleted() {
         if (isViewAttached()) {
             getView().showContent();
-            Log.d("TTT", "onCompleted()");
         }
     }
 

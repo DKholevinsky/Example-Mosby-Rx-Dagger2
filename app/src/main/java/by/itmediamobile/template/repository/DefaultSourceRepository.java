@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.itmediamobile.template.model.Source;
-import by.itmediamobile.template.model.SourceCategory;
 import by.itmediamobile.template.model.apimodel.SourceApiModel;
 import by.itmediamobile.template.model.apimodel.SourcesApiModel;
 import by.itmediamobile.template.service.ApiService;

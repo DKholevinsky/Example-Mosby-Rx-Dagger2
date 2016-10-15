@@ -2,7 +2,7 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/coordinator"
+    android:id="@+id/contentView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -24,6 +24,10 @@
         </android.support.design.widget.TabLayout>
 
     </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/error_view" />
+
+    <include layout="@layout/loading_view" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"

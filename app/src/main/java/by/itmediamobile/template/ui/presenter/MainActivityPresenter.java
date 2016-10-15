@@ -3,8 +3,6 @@ package by.itmediamobile.template.ui.presenter;
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 
 import by.itmediamobile.template.ui.fragment.CategoryPageFragment;
-import by.itmediamobile.template.ui.fragment.FeedFragment;
-import by.itmediamobile.template.ui.fragment.SourceFragment;
 import by.itmediamobile.template.ui.view.MainActivityView;
 
 /**
