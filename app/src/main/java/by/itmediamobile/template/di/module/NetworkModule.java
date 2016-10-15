@@ -13,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Denis Kholevinsky
  */
 
+@SuppressWarnings("ALL")
 @Module
 public class NetworkModule {
 

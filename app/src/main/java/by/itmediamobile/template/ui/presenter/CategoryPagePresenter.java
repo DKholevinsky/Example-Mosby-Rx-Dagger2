@@ -16,6 +16,7 @@ import by.itmediamobile.template.ui.view.CategoryPageView;
  * Created by Denis Kholevinsky
  */
 
+@SuppressWarnings("ALL")
 public class CategoryPagePresenter extends MvpBasePresenter<CategoryPageView> {
 
     private Context context;

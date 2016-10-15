@@ -17,6 +17,7 @@ import by.itmediamobile.template.ui.event.FragmentChangeEvent;
 import by.itmediamobile.template.ui.presenter.MainActivityPresenter;
 import by.itmediamobile.template.ui.view.MainActivityView;
 
+@SuppressWarnings("ALL")
 public class MainActivity extends MvpActivity<MainActivityView, MainActivityPresenter> implements MainActivityView {
 
     @BindView(R.id.toolbar)

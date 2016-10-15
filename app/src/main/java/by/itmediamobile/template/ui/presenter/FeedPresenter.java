@@ -19,6 +19,7 @@ import rx.schedulers.Schedulers;
  * Created by Denis Kholevinsky
  */
 
+@SuppressWarnings("ALL")
 public class FeedPresenter extends MvpBasePresenter<FeedView> implements Observer<List<Feed>>{
 
     @Inject

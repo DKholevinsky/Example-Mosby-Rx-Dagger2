@@ -19,6 +19,7 @@ import rx.schedulers.Schedulers;
  * Created by Denis Kholevinsky
  */
 
+@SuppressWarnings("ALL")
 public class SourcePresenter extends MvpBasePresenter<SourceView> implements Observer<List<Source>> {
 
     @Inject

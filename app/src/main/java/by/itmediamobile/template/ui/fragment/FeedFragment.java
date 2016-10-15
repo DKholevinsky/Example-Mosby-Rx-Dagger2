@@ -88,6 +88,7 @@ public class FeedFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout, L
         return adapter == null ? null : adapter.getData();
     }
 
+    @NonNull
     @Override
     public LceViewState<List<Feed>, FeedView> createViewState() {
         setRetainInstance(true);

@@ -23,7 +23,6 @@ public class App extends Application {
 
     private static AppComponent appComponent;
     private static DataComponent dataComponent;
-    private static NetworkComponent networkComponent;
     private static ApiComponent apiComponent;
 
     @Override
@@ -63,9 +62,5 @@ public class App extends Application {
 
     public static DataComponent getDataComponent() {
         return dataComponent;
-    }
-
-    public static NetworkComponent getNetworkComponent() {
-        return networkComponent;
     }
 }

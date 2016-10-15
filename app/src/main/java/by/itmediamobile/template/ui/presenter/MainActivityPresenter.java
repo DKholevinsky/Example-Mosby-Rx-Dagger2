@@ -9,10 +9,13 @@ import by.itmediamobile.template.ui.view.MainActivityView;
  * Created by Denis Kholevinsky
  */
 
+@SuppressWarnings("ALL")
 public class MainActivityPresenter extends MvpBasePresenter<MainActivityView> {
 
     public void choiceFragment() {
-        getView().showChildFragment(new CategoryPageFragment());
+        if (isViewAttached()) {
+            getView().showChildFragment(new CategoryPageFragment());
+        }
     }
 
 }

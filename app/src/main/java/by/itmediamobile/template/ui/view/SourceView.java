@@ -12,6 +12,7 @@ import by.itmediamobile.template.model.Source;
 
 public interface SourceView extends MvpLceView<List<Source>> {
 
+    @SuppressWarnings("unused")
     void goToNews(String sourceId);
 
 }

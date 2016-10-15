@@ -7,6 +7,6 @@ package by.itmediamobile.template.app;
 public class Constant {
 
     public static final String API_KEY = "fbfc74a0eea040d98fdc5279b1a4c414";
-    public static final String BASE_URL = "https://newsapi.org/v1/";
+    static final String BASE_URL = "https://newsapi.org/v1/";
 
 }
