@@ -11,4 +11,7 @@ import by.itmediamobile.template.model.SourceCategory;
  */
 
 public interface CategoryPageView extends MvpLceView<List<SourceCategory>> {
+
+    void setupToolBar();
+
 }

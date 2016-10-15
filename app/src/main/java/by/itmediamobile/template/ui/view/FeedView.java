@@ -14,6 +14,8 @@ import by.itmediamobile.template.model.Feed;
 
 public interface FeedView extends MvpLceView<List<Feed>> {
 
+    void setupToolBar();
+
     void goToNews(Uri uri);
 
 }

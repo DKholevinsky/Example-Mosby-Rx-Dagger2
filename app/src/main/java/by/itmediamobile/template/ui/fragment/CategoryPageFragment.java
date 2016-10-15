@@ -41,6 +41,7 @@ public class CategoryPageFragment extends BaseMvpViewStateFragment<CoordinatorLa
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setupToolBar();
         adapter = new CategoryPageAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -93,7 +94,18 @@ public class CategoryPageFragment extends BaseMvpViewStateFragment<CoordinatorLa
     }
 
     @Override
+    public void onDestroyView() {
+        adapter = null;
+        super.onDestroyView();
+    }
+
+    @Override
     public void loadData(boolean pullToRefresh) {
         presenter.getData(pullToRefresh);
+    }
+
+    @Override
+    public void setupToolBar() {
+        setShowBackButtonInToolbar(false);
     }
 }

@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,6 +33,8 @@ import by.itmediamobile.template.ui.view.FeedView;
 
 public class FeedFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout, List<Feed>, FeedView, FeedPresenter> implements FeedView, SwipeRefreshLayout.OnRefreshListener {
 
+    @BindView(R.id.coordinator)
+    CoordinatorLayout coordinatorLayout;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -55,6 +58,7 @@ public class FeedFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout, L
 
         sourceId = getArguments().getString(ARG_SOURCE_ID);
 
+        setupToolBar();
         contentView.setOnRefreshListener(this);
 
         adapter = new FeedAdapter(new FeedAdapter.OnItemClickListener() {
@@ -113,7 +117,7 @@ public class FeedFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout, L
     public void showError(Throwable e, boolean pullToRefresh) {
         super.showError(e, pullToRefresh);
         contentView.setRefreshing(pullToRefresh);
-        Snackbar snackbar = Snackbar.make(contentView, e.getMessage(), Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, e.getMessage(), Snackbar.LENGTH_LONG);
         snackbar.show();
     }
 
@@ -137,6 +141,11 @@ public class FeedFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout, L
     public void onDestroyView() {
         adapter = null;
         super.onDestroyView();
+    }
+
+    @Override
+    public void setupToolBar() {
+        setShowBackButtonInToolbar(true);
     }
 
     @Override

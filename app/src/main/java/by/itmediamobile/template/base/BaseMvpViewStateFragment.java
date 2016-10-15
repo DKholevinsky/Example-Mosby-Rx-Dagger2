@@ -3,6 +3,7 @@ package by.itmediamobile.template.base;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,16 @@ public abstract class BaseMvpViewStateFragment<CV extends View, M, V extends Mvp
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         unbinder = ButterKnife.bind(this, view);
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    protected void setShowBackButtonInToolbar(boolean isShow) {
+        try {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(isShow);
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(isShow);
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(isShow);
+        }catch (Exception e) {
+
+        }
     }
 
     @Override

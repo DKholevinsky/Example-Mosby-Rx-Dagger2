@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 
@@ -17,7 +18,6 @@ import by.itmediamobile.template.ui.event.FragmentChangeEvent;
 import by.itmediamobile.template.ui.presenter.MainActivityPresenter;
 import by.itmediamobile.template.ui.view.MainActivityView;
 
-@SuppressWarnings("ALL")
 public class MainActivity extends MvpActivity<MainActivityView, MainActivityPresenter> implements MainActivityView {
 
     @BindView(R.id.toolbar)
@@ -34,6 +34,13 @@ public class MainActivity extends MvpActivity<MainActivityView, MainActivityPres
         getSupportActionBar().setHomeButtonEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         if (savedInstanceState == null) {
             presenter.choiceFragment();
