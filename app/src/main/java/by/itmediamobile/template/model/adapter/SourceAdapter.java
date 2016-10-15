@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +85,7 @@ public class SourceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         void bind(final Source source) {
             this.name.setText(source.getName());
             this.description.setText(source.getDescription());
-            Picasso.with(itemView.getContext())
+            Glide.with(itemView.getContext())
                     .load(source.getImage())
                     .into(this.image);
             this.itemView.setOnClickListener(new View.OnClickListener() {

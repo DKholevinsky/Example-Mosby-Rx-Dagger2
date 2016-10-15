@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +90,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             this.name.setText(feed.getTitle());
             this.description.setText(feed.getDescription());
             this.author.setText(feed.getAuthor());
-            Picasso.with(itemView.getContext())
+            Glide.with(itemView.getContext())
                     .load(feed.getImage())
                     .into(this.image);
             this.itemView.setOnClickListener(new View.OnClickListener() {
