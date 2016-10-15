@@ -1,5 +1,7 @@
 package by.itmediamobile.template.ui.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -57,7 +59,7 @@ public class FeedFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout, L
         adapter = new FeedAdapter(new FeedAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Feed feed) {
-                Toast.makeText(getContext(), ((NewsFeed) feed).getTitle(), Toast.LENGTH_LONG).show();
+                goToNews(Uri.parse(((NewsFeed) feed).getUrl()));
             }
         });
 
@@ -133,5 +135,16 @@ public class FeedFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout, L
     public void onDestroyView() {
         adapter = null;
         super.onDestroyView();
+    }
+
+    @Override
+    public void goToNews(Uri uri) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            getContext().startActivity(intent);
+        }catch (Exception e){
+            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
     }
 }

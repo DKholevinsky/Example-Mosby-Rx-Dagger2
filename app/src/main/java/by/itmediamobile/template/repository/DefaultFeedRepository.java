@@ -32,7 +32,7 @@ public class DefaultFeedRepository implements FeedRepository {
                     public List<Feed> call(ArticlesApiModel articlesApiModel) {
                         List<Feed> feeds = new ArrayList<>();
                         for (NewsApiModel news : articlesApiModel.getArticles()) {
-                            feeds.add(new NewsFeed(news.getTitle(), news.getDescription(), news.getUrlToImage(), news.getAuthor()));
+                            feeds.add(new NewsFeed(news.getTitle(), news.getDescription(), news.getUrlToImage(), news.getAuthor(), news.getUrl()));
                         }
                         return feeds;
                     }
