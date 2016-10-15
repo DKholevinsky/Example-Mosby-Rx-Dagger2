@@ -107,5 +107,6 @@ public class CategoryPageFragment extends BaseMvpViewStateFragment<CoordinatorLa
     @Override
     public void setupToolBar() {
         setShowBackButtonInToolbar(false);
+        setToolbarTitle(getString(R.string.app_name));
     }
 }

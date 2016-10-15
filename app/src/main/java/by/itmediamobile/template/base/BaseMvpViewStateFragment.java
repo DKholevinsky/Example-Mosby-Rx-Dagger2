@@ -48,6 +48,14 @@ public abstract class BaseMvpViewStateFragment<CV extends View, M, V extends Mvp
         }
     }
 
+    protected void setToolbarTitle(String title) {
+        try {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(title);
+        }catch (Exception e) {
+
+        }
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

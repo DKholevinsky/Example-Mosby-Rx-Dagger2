@@ -146,6 +146,7 @@ public class FeedFragment extends BaseMvpViewStateFragment<SwipeRefreshLayout, L
     @Override
     public void setupToolBar() {
         setShowBackButtonInToolbar(true);
+        setToolbarTitle(sourceId.toUpperCase());
     }
 
     @Override
