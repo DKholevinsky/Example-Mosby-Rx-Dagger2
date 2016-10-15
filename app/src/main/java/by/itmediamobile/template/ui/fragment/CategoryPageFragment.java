@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -30,6 +31,8 @@ public class CategoryPageFragment extends BaseMvpViewStateFragment<CoordinatorLa
 
     private CategoryPageAdapter adapter;
 
+    @BindView(R.id.contentView)
+    CoordinatorLayout coordinatorLayout;
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
     @BindView(R.id.view_pager)
@@ -61,7 +64,7 @@ public class CategoryPageFragment extends BaseMvpViewStateFragment<CoordinatorLa
 
     @Override
     public List<SourceCategory> getData() {
-        return adapter == null ? null: adapter.getCategories();
+        return adapter == null ? null : adapter.getCategories();
     }
 
     @NonNull
@@ -79,7 +82,8 @@ public class CategoryPageFragment extends BaseMvpViewStateFragment<CoordinatorLa
     @Override
     public void showError(Throwable e, boolean pullToRefresh) {
         super.showError(e, pullToRefresh);
-        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, e.getMessage(), Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 
     @Override
