@@ -7,9 +7,12 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.data.RetainingLceViewState;
 
@@ -37,6 +40,10 @@ public class CategoryPageFragment extends BaseMvpViewStateFragment<CoordinatorLa
     TabLayout tabLayout;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.image)
+    ImageView image;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -106,7 +113,11 @@ public class CategoryPageFragment extends BaseMvpViewStateFragment<CoordinatorLa
 
     @Override
     public void setupToolBar() {
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         setShowBackButtonInToolbar(false);
         setToolbarTitle(getString(R.string.app_name));
+        Glide.with(getContext())
+                .load("http://news.bbcimg.co.uk/news/special/2015/newsspec_10077/content/english/img/1024/future_of_news.jpg")
+                .into(image);
     }
 }

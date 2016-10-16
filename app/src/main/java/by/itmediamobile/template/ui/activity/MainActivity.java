@@ -1,17 +1,14 @@
 package by.itmediamobile.template.ui.activity;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.itmediamobile.template.R;
 import by.itmediamobile.template.ui.event.FragmentChangeEvent;
@@ -20,27 +17,11 @@ import by.itmediamobile.template.ui.view.MainActivityView;
 
 public class MainActivity extends MvpActivity<MainActivityView, MainActivityPresenter> implements MainActivityView {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(MainActivity.this);
-
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setHomeButtonEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
 
         if (savedInstanceState == null) {
             presenter.choiceFragment();
